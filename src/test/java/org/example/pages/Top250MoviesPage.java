@@ -41,7 +41,8 @@ public class Top250MoviesPage {
     public static Movie findFirstMovieByTitle(List<Movie> movieList, String title) {
          Movie foundMovie = new Movie();
         for (int i = 0; i < movieList.size(); i++) {
-            if (movieList.get(i).title.toLowerCase().equals(title)) {
+            if (movieList.get(i).title.contains(title)) {
+                System.out.println(i);
                 foundMovie = movieList.get(i);
             }
         }

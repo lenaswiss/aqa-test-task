@@ -28,7 +28,7 @@ public class MoviesListTest {
         var topFiveMoviesList = apiClient.moviesService.getTop250Movies(API_KYE).execute().body().movies.subList(0, 5);
         Movie targetedMovie = new Movie();
         for (Movie m : topFiveMoviesList) {
-            if (m.title.toLowerCase().contains("godfather")) {
+            if (m.title.equals("The Godfather")) {
                 targetedMovie = m;
                 break;
             }
