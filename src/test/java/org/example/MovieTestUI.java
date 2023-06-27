@@ -13,6 +13,10 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.security.SecureRandom;
+import java.util.Collection;
+import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static com.codeborne.selenide.Selenide.open;
@@ -45,7 +49,7 @@ public class MovieTestUI {
     public void godfatherMovieTest() {
         BasePage.openTop250MoviesPage();
         var top5MoviesList = Top250MoviesPage.getTop250MoviesList().subList(0, 5);
-        var foundMovie = Top250MoviesPage.findFirstMovieByTitle(top5MoviesList, "godfather");
+        var foundMovie = Top250MoviesPage.findFirstMovieByTitle(top5MoviesList, "the godfather");
         Top250MoviesPage.openMoviePageByPosition(foundMovie.position);
         Assert.assertTrue(MoviePage.getMovieInfoTitle().equals(foundMovie.title), "Titles are not equal");
         Assert.assertTrue(MoviePage.getMovieInfoYear().equals(foundMovie.year), "Year on the Top 250 list page is not equal to the year on the Movie page ");

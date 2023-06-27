@@ -3,6 +3,7 @@ package org.example.pages;
 import com.codeborne.selenide.ElementsCollection;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -38,11 +39,10 @@ public class Top250MoviesPage {
     }
 
     public static Movie findFirstMovieByTitle(List<Movie> movieList, String title) {
-        Movie foundMovie = new Movie();
+         Movie foundMovie = new Movie();
         for (int i = 0; i < movieList.size(); i++) {
-            if (movieList.get(i).title.toLowerCase().contains(title.toLowerCase())) {
+            if (movieList.get(i).title.toLowerCase().equals(title)) {
                 foundMovie = movieList.get(i);
-                break;
             }
         }
         return foundMovie;
@@ -65,7 +65,15 @@ public class Top250MoviesPage {
             this.rating = rating;
         }
 
+        @Override
+        public String toString() {
+            return "Movie{" +
+                    "title='" + title + '\'' +
+                    ", position='" + position + '\'' +
+                    ", year='" + year + '\'' +
+                    ", rating='" + rating + '\'' +
+                    '}';
+        }
     }
-
 
 }
